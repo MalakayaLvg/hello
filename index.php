@@ -14,31 +14,42 @@ $usernameAutorise = "oslynx";
 $motdepasseAutorise = "mdp";
 $secret = "le sens de la vie c'est vers la droite";
 $contenu = "Entrez votre nom d'utilisateur et votre mot de passe pour connaitre la verité";
+$username = "";
+$password = "";
+//if(isset($_GET["prenom"])){
+//    $prenom = $_GET["prenom"];
+//    echo $prenom;
+//}
+//
+//if(isset($_GET["prenom"])){
+//    $username = $_GET["username"];
+//    echo $username;
+//}
+//
+//if(isset($_GET["password"])){
+//    $password = $_GET["password"];
+//    echo "password";
+//}
 
-if(isset($_GET["prenom"])){
-    $prenom = $_GET["prenom"];
-}
-
-if(isset($_GET["prenom"])){
-    $username = $_GET["username"];
-}
-if(isset($_GET["password"])){
-    $password = $_GET["password"];
-}
+$username = $_GET["username"];
+$password = $_GET["password"];
 
 
-
-
-if ($username===$usernameAutorise){
+if ($username==$usernameAutorise){
     echo "correct";
 }
 
-if ($username===$usernameAutorise & $password===$motdepasseAutorise){
+if ($username==$usernameAutorise & $password==$motdepasseAutorise){
     $contenu = $secret;
+} elseif ($username==$usernameAutorise & $password != $motdepasseAutorise){
+    $contenu = "password incorrect";
+}elseif ($username != $usernameAutorise & $password == $motdepasseAutorise){
+    $contenu = "username incorrect";
 }
 ?>
 
 <h2>Hello <?= $prenom ?></h2>
+
 
 <form method="get" action="">
     <input type="text" name="prenom">
